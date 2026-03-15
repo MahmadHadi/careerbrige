@@ -37,6 +37,7 @@ export interface IExpert {
   tags: string[];
   studentBackground: string[];
   portfolioImages: string[];
+  isVerified?: Boolean;
 }
 
 export interface AuthRequest extends Request {
