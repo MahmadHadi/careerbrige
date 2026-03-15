@@ -40,6 +40,7 @@ const ExpertSchema = new mongoose.Schema<IExpert>({
   tags: [String],
   studentBackground: [String],
   portfolioImages: [String],
+  isVerified: { type: Boolean, default: false },
 });
 
 const ExpertModel =

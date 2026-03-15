@@ -1,9 +1,13 @@
 import express from "express";
+
 import cors from "cors";
 import helmet from "helmet";
+
 import dotenv from "dotenv";
 import connectDb from "./config/db";
+
 import AuthRouter from "./routes/auth.routes";
+import ExpertRouter from "./routes/expert.routes";
 
 dotenv.config();
 
@@ -16,6 +20,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/auth", AuthRouter);
+app.use("/api/expert", ExpertRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "CareerBridge API is running" });
