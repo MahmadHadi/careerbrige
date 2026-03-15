@@ -40,6 +40,19 @@ export interface IExpert {
   isVerified?: Boolean;
 }
 
+export interface IBooking {
+  student: mongoose.Types.ObjectId;
+  expert: mongoose.Types.ObjectId;
+  session_type: "call" | "video" | "in-person";
+  meeting_url?: string;
+  location?: string;
+  date: Date;
+  start_time: Date;
+  end_time?: Date;
+  status: "pending" | "confirmed" | "completed" | "cancelled";
+  student_message?: string;
+}
+
 export interface AuthRequest extends Request {
   user?: {
     id: string;
