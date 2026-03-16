@@ -29,5 +29,17 @@ const authMiddleware = async (
     res.status(400).json({ error: "Invalid token" });
   }
 };
+const adminMiddleware = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) => {
+  if (!req.user) return res.status(401).json({ message: "Unauthorized" });
 
-export default authMiddleware;
+  if (req.user.role !== "admin")
+    return res.status(403).json({ message: "Access denied" });
+
+  next();
+};
+
+export { authMiddleware, adminMiddleware };

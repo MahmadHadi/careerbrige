@@ -9,6 +9,7 @@ import connectDb from "./config/db";
 import AuthRouter from "./routes/auth.routes";
 import ExpertRouter from "./routes/expert.routes";
 import BookingRouter from "./routes/booking.routes";
+import AdminRouter from "./routes/admin.routes";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use("/api/auth", AuthRouter);
 app.use("/api/expert", ExpertRouter);
 app.use("/api/booking", BookingRouter);
+app.use("/api/admin", AdminRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "CareerBridge API is running" });

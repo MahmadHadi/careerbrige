@@ -5,11 +5,11 @@ import {
   getExpertProfile,
   updateExpert,
 } from "../controllers/expert.controller";
-import authMiddleware from "../middleware/auth.middleware";
+import { authMiddleware } from "../middleware/auth.middleware";
 
 const ExpertRouter = express.Router();
 
-ExpertRouter.post("/", authMiddleware, createExpertProfile)
+ExpertRouter.post("/", authMiddleware, createExpertProfile);
 
 ExpertRouter.get("/:id", getExpertProfile);
 ExpertRouter.get("/", getAllExpert);

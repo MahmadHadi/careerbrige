@@ -5,7 +5,7 @@ import {
   getExpertBooking,
   updateStatus,
 } from "../controllers/booking.controller";
-import authMiddleware from "../middleware/auth.middleware";
+import { authMiddleware } from "../middleware/auth.middleware";
 
 const BookingRouter = express.Router();
 
