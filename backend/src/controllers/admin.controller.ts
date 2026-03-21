@@ -1,26 +1,30 @@
 import UserModel from "../models/User";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { AuthRequest } from "../types";
 import ExpertModel from "../models/Expert";
+import errorHandler from "../middleware/error.middleware";
 
-const getAllUsers = async (req: AuthRequest, res: Response) => {
+const getAllUsers = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const allUsers = await UserModel.find().select("-password");
     if (allUsers.length === 0)
       return res.status(404).json({ message: "no users found " });
 
     res.status(200).json({ message: "all users fetched", allUsers });
-  } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({
-        message: "error creating user",
-        error: error.message,
-      });
-    }
+  } catch (err) {
+    next(err);
   }
 };
 
-const getAllExpert = async (req: Request, res: Response) => {
+const getAllExpert = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const allExpert = await ExpertModel.find().select("-password");
     if (allExpert.length === 0)
@@ -30,16 +34,15 @@ const getAllExpert = async (req: Request, res: Response) => {
       .status(200)
       .json({ message: "all expert profile found", allExpert });
   } catch (err) {
-    if (err instanceof Error) {
-      return res.status(500).json({
-        message: "Error fetching all expert profile",
-        error: err.message,
-      });
-    }
+    next(err);
   }
 };
 
-const verifyExpert = async (req: AuthRequest, res: Response) => {
+const verifyExpert = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { id } = req.params;
     const verifiedExpert = await ExpertModel.findByIdAndUpdate(
@@ -56,16 +59,15 @@ const verifyExpert = async (req: AuthRequest, res: Response) => {
 
     return res.status(200).json({ message: "expert verified successfully " });
   } catch (err) {
-    if (err instanceof Error) {
-      return res.status(500).json({
-        message: "Error fetching all expert profile",
-        error: err.message,
-      });
-    }
+    next(err);
   }
 };
 
-const deleteUser = async (req: AuthRequest, res: Response) => {
+const deleteUser = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { id } = req.params;
     const deletedUser = await UserModel.findByIdAndDelete(id);
@@ -77,12 +79,7 @@ const deleteUser = async (req: AuthRequest, res: Response) => {
 
     return res.status(200).json({ message: "user deleted successfully " });
   } catch (err) {
-    if (err instanceof Error) {
-      return res.status(500).json({
-        message: "Error fetching all expert profile",
-        error: err.message,
-      });
-    }
+    next(err);
   }
 };
 

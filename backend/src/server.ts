@@ -10,6 +10,7 @@ import AuthRouter from "./routes/auth.routes";
 import ExpertRouter from "./routes/expert.routes";
 import BookingRouter from "./routes/booking.routes";
 import AdminRouter from "./routes/admin.routes";
+import errorHandler from "./middleware/error.middleware";
 
 dotenv.config();
 
@@ -26,9 +27,12 @@ app.use("/api/expert", ExpertRouter);
 app.use("/api/booking", BookingRouter);
 app.use("/api/admin", AdminRouter);
 
+
 app.get("/", (req, res) => {
   res.json({ message: "CareerBridge API is running" });
 });
+
+app.use(errorHandler);
 
 const startServer = async () => {
   await connectDb(); // since connetDb is async here

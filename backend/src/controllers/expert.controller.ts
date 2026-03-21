@@ -1,9 +1,13 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import ExpertModel from "../models/Expert";
 import { AuthRequest } from "../types";
 
 // create expert profile
-const createExpertProfile = async (req: AuthRequest, res: Response) => {
+const createExpertProfile = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     if (!req.user) {
       return res.status(401).json({ message: "Unauthorized" });
@@ -56,7 +60,11 @@ const createExpertProfile = async (req: AuthRequest, res: Response) => {
 };
 
 // expert profile by obj id
-const getExpertProfile = async (req: Request, res: Response) => {
+const getExpertProfile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { id } = req.params;
     const expertProfile = await ExpertModel.findById(id);
@@ -67,17 +75,16 @@ const getExpertProfile = async (req: Request, res: Response) => {
       .status(200)
       .json({ message: "Expert profile fetched", expertProfile });
   } catch (err) {
-    if (err instanceof Error) {
-      return res.status(500).json({
-        message: "Error fetching all expert profile",
-        error: err.message,
-      });
-    }
+    next(err);
   }
 };
 
 // get all expert profile
-const getAllExpert = async (req: Request, res: Response) => {
+const getAllExpert = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const allExpert = await ExpertModel.find({ isVerified: true }); // only verified experts
     if (allExpert.length === 0)
@@ -87,16 +94,15 @@ const getAllExpert = async (req: Request, res: Response) => {
       .status(200)
       .json({ message: "all expert profile found", allExpert });
   } catch (err) {
-    if (err instanceof Error) {
-      return res.status(500).json({
-        message: "Error fetching all expert profile",
-        error: err.message,
-      });
-    }
+    next(err);
   }
 };
 
-const updateExpert = async (req: AuthRequest, res: Response) => {
+const updateExpert = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     if (!req.user) {
       return res.status(401).json({ message: "Unauthorized" });
@@ -148,12 +154,7 @@ const updateExpert = async (req: AuthRequest, res: Response) => {
       .status(200)
       .json({ message: "expert profile updated", updatedExpert });
   } catch (err) {
-    if (err instanceof Error) {
-      return res.status(500).json({
-        message: "Error fetching all expert profile",
-        error: err.message,
-      });
-    }
+    next(err);
   }
 };
 

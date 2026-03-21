@@ -1,10 +1,10 @@
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { AuthRequest } from "../types";
 
 import BookingModel from "../models/Booking";
 
 // create booking
-const createBooking = async (req: AuthRequest, res: Response) => {
+const createBooking = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     if (!req.user) return res.status(401).json({ message: "Unauthorized" });
     const student = req.user.id;
@@ -53,17 +53,12 @@ const createBooking = async (req: AuthRequest, res: Response) => {
       .status(200)
       .json({ message: "booking created successfully", createdBooking });
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({
-        message: "error creating user",
-        error: error.message,
-      });
-    }
+    next(error);
   }
 };
 
 // get student booking
-const getStudentBooking = async (req: AuthRequest, res: Response) => {
+const getStudentBooking = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     if (!req.user) return res.status(401).json({ message: "Unauthorized" });
     const student = req.user.id;
@@ -76,17 +71,12 @@ const getStudentBooking = async (req: AuthRequest, res: Response) => {
       .status(200)
       .json({ message: "all booking fetched", studentBooking });
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({
-        message: "error creating user",
-        error: error.message,
-      });
-    }
+    next(error);
   }
 };
 
 // get expert booking
-const getExpertBooking = async (req: AuthRequest, res: Response) => {
+const getExpertBooking = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     if (!req.user) return res.status(401).json({ message: "Unauthorized" });
     const expert = req.user.id;
@@ -99,17 +89,12 @@ const getExpertBooking = async (req: AuthRequest, res: Response) => {
       .status(200)
       .json({ message: "all booking fetched", expertBooking });
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({
-        message: "error creating user",
-        error: error.message,
-      });
-    }
+    next(error);
   }
 };
 
 // update status by expert
-const updateStatus = async (req: AuthRequest, res: Response) => {
+const updateStatus = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     if (!req.user) return res.status(401).json({ message: "Unauthorized" });
 
@@ -131,12 +116,7 @@ const updateStatus = async (req: AuthRequest, res: Response) => {
 
     return res.status(200).json({ message: "status updated", updatedBooking });
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({
-        message: "error creating user",
-        error: error.message,
-      });
-    }
+    next(error);
   }
 };
 

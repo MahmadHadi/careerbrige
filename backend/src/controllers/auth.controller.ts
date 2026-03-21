@@ -1,20 +1,23 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { NextFunction } from "express";
 
 import UserModel from "../models/User";
 
 // Helper
 const generateToken = (id: string, role: string): string => {
-  return jwt.sign(
-    { id, role },
-    process.env.JWT_SECRET as string,
-    { expiresIn: "7d" }
-  )
-}
+  return jwt.sign({ id, role }, process.env.JWT_SECRET as string, {
+    expiresIn: "7d",
+  });
+};
 
 // register user
-const registerUser = async (req: Request, res: Response) => {
+const registerUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { name, email, password, role } = req.body;
 
@@ -39,20 +42,15 @@ const registerUser = async (req: Request, res: Response) => {
       token,
     });
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({
-        message: "error creating user",
-        error: error.message,
-      });
-    }
+    next(error);
   }
 };
 
 // Login user
-const loginUser = async (req: Request, res: Response) => {
+const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password } = req.body;
-    console.log(email)
+    console.log(email);
     // check if user exists or not
     const user = await UserModel.findOne({ email });
     if (!user) {
@@ -72,12 +70,7 @@ const loginUser = async (req: Request, res: Response) => {
       token,
     });
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({
-        message: "error creating user",
-        error: error.message,
-      });
-    }
+    next(error);
   }
 };
 
