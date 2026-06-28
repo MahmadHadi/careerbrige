@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "a2efabc7-c9db-46f7-be1c-c8a8e78c4509",
+		"name": "careerbrige",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36485981",
+		"_collection_link": "https://first-team-8035.postman.co/workspace/first-work-space~3953aa63-3490-44a2-9f25-81a118528346/collection/36485981-a2efabc7-c9db-46f7-be1c-c8a8e78c4509?action=share&source=collection_link&creator=36485981"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"student1\",\n    \"email\": \"student1@gmail.com\",\n    \"password\": \"student1\",\n    \"role\": \"student\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ":5000/api/auth/register",
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"demo1@gmail.com\",\n    \"password\": \"demo1password\"\n}"
+						},
+						"url": {
+							"raw": ":5000/api/auth/login",
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "expert",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMzNkMWE0Yzc3OGI2YjIyMGUxM2JhYSIsInJvbGUiOiJleHBlcnQiLCJpYXQiOjE3ODE3ODA5MDAsImV4cCI6MTc4MjM4NTcwMH0.aAZ0MeW8-OdPf9VE0WnCXl1adW5bj-WMzwE4L0kifYY",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bio\": \"MERN Stack mentor and tutor\",\n  \"company\": \"Cosmos Classes\",\n  \"designation\": \"MERN Stack mentor\",\n  \"education\": [{ \"institution\": \"GMIU\", \"degree\": \"B.Tech\", \"field\": \"IT\", \"year\": 2027 }],\n  \"socialLinks\": { \"linkedin\": \"https://linkedin.com/in/mahmadhadi\" },\n  \"sessionTypes\": [\"call\", \"video\"],\n  \"availability\": [{ \"day\": \"Monday\", \"startTime\": \"09:00\", \"endTime\": \"12:00\" }, { \"day\": \"Monday\", \"startTime\": \"15:00\", \"endTime\": \"17:00\" }],\n  \"tags\": [\"DSA\", \"backend\", \"fintech\"],\n  \"studentBackground\": [\"IT\", \"Computer Science\"],\n  \"portfolioImages\": []\n}"
+						},
+						"url": {
+							"raw": ":5000/api/expert",
+							"port": "5000",
+							"path": [
+								"api",
+								"expert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjY0YmNjMjljNWZkYTVlZmM5NGMyNiIsInJvbGUiOiJleHBlcnQiLCJpYXQiOjE3NzM1NTQ2MzYsImV4cCI6MTc3NDE1OTQzNn0.-nwnPNMIRSIWwboncVBxt_f6AW5PGtCJgROzvFb9I6E",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ":5000/api/expert",
+							"port": "5000",
+							"path": [
+								"api",
+								"expert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjY0YmNjMjljNWZkYTVlZmM5NGMyNiIsInJvbGUiOiJleHBlcnQiLCJpYXQiOjE3NzM1NTQ2MzYsImV4cCI6MTc3NDE1OTQzNn0.-nwnPNMIRSIWwboncVBxt_f6AW5PGtCJgROzvFb9I6E",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bio\": \"Updated bio — 10 years experience now\",\n  \"company\": \"Razorpay\",\n  \"designation\": \"Lead Engineer\"\n}"
+						},
+						"url": {
+							"raw": ":5000/api/expert/69b64ca529c5fda5efc94c2b",
+							"port": "5000",
+							"path": [
+								"api",
+								"expert",
+								"69b64ca529c5fda5efc94c2b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "booking",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMzNkMWY0Yzc3OGI2YjIyMGUxM2JiNiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzgxNzgwOTgwLCJleHAiOjE3ODIzODU3ODB9.i6CE9kAwgTfkcRntG8cNKP5SR9tPA6dPxJNfa-Z4Hz0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"expert\": \"69b64bcc29c5fda5efc94c26\",\n  \"session_type\": \"video\",\n  \"meeting_url\": \"https://meet.google.com/abc-xyz\",\n  \"date\": \"2026-04-01\",\n  \"start_time\": \"2026-04-01T09:00:00.000Z\",\n  \"end_time\": \"2026-04-01T10:00:00.000Z\",\n  \"student_message\": \"I want guidance on switching to product management\"\n}"
+						},
+						"url": {
+							"raw": ":5000/api/booking",
+							"port": "5000",
+							"path": [
+								"api",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "student_bookings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMzNkMWY0Yzc3OGI2YjIyMGUxM2JiNiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzgxNzgwOTgwLCJleHAiOjE3ODIzODU3ODB9.i6CE9kAwgTfkcRntG8cNKP5SR9tPA6dPxJNfa-Z4Hz0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ":5000/api/booking/student",
+							"port": "5000",
+							"path": [
+								"api",
+								"booking",
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "expert_booking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMzNkMWE0Yzc3OGI2YjIyMGUxM2JhYSIsInJvbGUiOiJleHBlcnQiLCJpYXQiOjE3ODE3ODA5MDAsImV4cCI6MTc4MjM4NTcwMH0.aAZ0MeW8-OdPf9VE0WnCXl1adW5bj-WMzwE4L0kifYY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ":5000/api/booking/expert",
+							"port": "5000",
+							"path": [
+								"api",
+								"booking",
+								"expert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjgzNWVhMmU2MzMyOGI3Y2ZkZThiZiIsInJvbGUiOiJleHBlcnQiLCJpYXQiOjE3NzM2ODA1ODIsImV4cCI6MTc3NDI4NTM4Mn0.nrcn5_nIkdwlR582mNr9v3CiXmKhAPR1doHvXRBvH2c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"confirmed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ":5000/api/booking/69b837122e63328b7cfde8c4",
+							"port": "5000",
+							"path": [
+								"api",
+								"booking",
+								"69b837122e63328b7cfde8c4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "all_users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjgzNTg4MmU2MzMyOGI3Y2ZkZThiYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MzY4MzkxMCwiZXhwIjoxNzc0Mjg4NzEwfQ.XZ_Cg9Rf7XiEac1H3LIqm1TOek6mdGBMO6XZSqZmGB4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": ":5000/api/admin",
+							"port": "5000",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all_expert",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjgzNTg4MmU2MzMyOGI3Y2ZkZThiYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MzY4MzkxMCwiZXhwIjoxNzc0Mjg4NzEwfQ.XZ_Cg9Rf7XiEac1H3LIqm1TOek6mdGBMO6XZSqZmGB4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": ":5000/api/admin/all-expert",
+							"port": "5000",
+							"path": [
+								"api",
+								"admin",
+								"all-expert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify_expert",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjgzNTg4MmU2MzMyOGI3Y2ZkZThiYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MzY4MzkxMCwiZXhwIjoxNzc0Mjg4NzEwfQ.XZ_Cg9Rf7XiEac1H3LIqm1TOek6mdGBMO6XZSqZmGB4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isVerified\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ":5000/api/admin/verify-expert/69b64ca529c5fda5efc94c2b",
+							"port": "5000",
+							"path": [
+								"api",
+								"admin",
+								"verify-expert",
+								"69b64ca529c5fda5efc94c2b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjgzNTg4MmU2MzMyOGI3Y2ZkZThiYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MzY4MzkxMCwiZXhwIjoxNzc0Mjg4NzEwfQ.XZ_Cg9Rf7XiEac1H3LIqm1TOek6mdGBMO6XZSqZmGB4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isVerified\": true\n}"
+						},
+						"url": {
+							"raw": ":5000/api/admin/user/69a9cddbadd44ef79c23cc87",
+							"port": "5000",
+							"path": [
+								"api",
+								"admin",
+								"user",
+								"69a9cddbadd44ef79c23cc87"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "removed-student",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"hadi\",\n    \"email\": \"hadi@gmail.com\",\n    \"phone\": \"11111111111\",\n    \"course\": \"hadi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/students",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list_by_id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Updated\",\n    \"course\": \"Software Engineering\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

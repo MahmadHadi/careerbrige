@@ -6,6 +6,7 @@ import BookingModel from "../models/Booking";
 // create booking
 const createBooking = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
+    console.log("req.body", req.body);
     if (!req.user) return res.status(401).json({ message: "Unauthorized" });
     const student = req.user.id;
 
@@ -19,7 +20,6 @@ const createBooking = async (req: AuthRequest, res: Response, next: NextFunction
       end_time,
       student_message,
     } = req.body;
-
     const conflict = await BookingModel.findOne({
       // to check double booking
       expert,
