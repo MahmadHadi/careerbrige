@@ -2,7 +2,7 @@ import z from "zod";
 
 const bookingSchema = z.object({
   expert: z.string().regex(/^[a-f\d]{24}$/i, "Invalid expert ID"),
-  sessionType: z.enum(["call", "video", "in-person"]),
+  session_type: z.enum(["call", "video", "in-person"]),
   meeting_url: z.string().optional(),
   location: z.string().optional(),
   date: z.string(),

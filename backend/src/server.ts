@@ -29,13 +29,13 @@ app.use("/api/admin", AdminRouter);
 
 
 app.get("/", (req, res) => {
-  res.json({ message: "CareerBridge API is running" });
+  res.json({ message: "API running" });
 });
 
 app.use(errorHandler);
 
 const startServer = async () => {
-  await connectDb(); // since connetDb is async here
+  await connectDb();
 
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
