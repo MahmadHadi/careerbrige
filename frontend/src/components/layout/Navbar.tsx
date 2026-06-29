@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import assets from "../../assets/assets";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const Navbar = () => {
   const navLinks = [
@@ -8,8 +10,9 @@ const Navbar = () => {
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
+  const [showNav, setShowNav] = useState(false);
   return (
-    <nav className="text-sm px-10 py-4 border-b border-gray-200 flex items-center justify-between ">
+    <nav className="text-sm px-10 py-4 border-b border-gray-200 flex items-center justify-between">
       {/* nav-left start */}
       <Link to={"/"}>
         <div className="flex items-center gap-2 ">
@@ -22,7 +25,7 @@ const Navbar = () => {
       {/* nav-left end */}
 
       {/* nav-center start */}
-      <div className="flex items-center justify-center gap-4 w-1/2">
+      <div className="hidden md:flex items-center justify-center gap-4 w-1/2">
         {navLinks.map((link) => (
           <NavLink
             key={link.path}
@@ -42,7 +45,7 @@ const Navbar = () => {
       {/* nav-center end */}
 
       {/* nav-right start */}
-      <div className=" flex gap-2 justify-end ">
+      <div className="hidden md:flex gap-2 justify-end  ">
         <Link
           to="/login"
           className="px-7 py-1 rounded hover:bg-blue-500 hover:text-white transition"
@@ -58,6 +61,49 @@ const Navbar = () => {
         </Link>
       </div>
       {/* nav-right end */}
+
+      {/* Mobile nav start */}
+      <div className="flex md:hidden">
+        <Menu onClick={() => setShowNav(!showNav)} />
+        {/* mobile side-bar start */}
+        <div
+          // className={`${showNav ? "right-0" : "-right-full"} bg-[#216DFF] text-white w-70 max-w-[80vw] h-screen fixed top-0 p-5 transition-all duration-500 flex flex-col justify-between gap-5`}
+          className={`fixed inset-y-0 ${
+            showNav ? "right-0" : "-right-full"
+          } w-[280px] max-w-[80vw] bg-[#216DFF] text-white p-5 transition-all duration-300 flex flex-col justify-between z-50`}
+        >
+          {/* top cross start */}
+          <div className="flex justify-end">
+            <div
+              className=" bg-[#FFFFFF] text-black p-2 rounded-full w-fit"
+              onClick={() => setShowNav(!showNav)}
+            >
+              <X />
+            </div>
+          </div>
+          {/* top cross end */}
+          {/* mobile link start */}
+          <div className="flex flex-col justify-center h-1/2">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) => `text-2xl ${isActive ? "" : ""}`}
+              >
+                {link.name}
+              </NavLink>
+            ))}
+          </div>
+          {/* mobile link end */}
+
+          {/* mobile footer start */}
+          <div>@2026 careerBridge. all right resereved.</div>
+          {/* mobile footer end */}
+        </div>
+
+        {/* mobile side-bar end */}
+      </div>
+      {/* Mobile nav end */}
     </nav>
   );
 };
