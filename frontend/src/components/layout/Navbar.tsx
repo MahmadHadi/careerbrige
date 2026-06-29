@@ -12,7 +12,8 @@ const Navbar = () => {
   ];
   const [showNav, setShowNav] = useState(false);
   return (
-    <nav className="text-sm px-10 py-4 border-b border-gray-200 flex items-center justify-between">
+    // <nav className="text-sm px-10 py-4 border-b border-gray-200 flex items-center justify-between">
+    <nav className="fixed w-screen top-0 z-40 bg-white/80 backdrop-blur-md text-sm px-10 py-4 border-b border-gray-200 flex items-center justify-between">
       {/* nav-left start */}
       <Link to={"/"}>
         <div className="flex items-center gap-2 ">
@@ -67,10 +68,9 @@ const Navbar = () => {
         <Menu onClick={() => setShowNav(!showNav)} />
         {/* mobile side-bar start */}
         <div
-          // className={`${showNav ? "right-0" : "-right-full"} bg-[#216DFF] text-white w-70 max-w-[80vw] h-screen fixed top-0 p-5 transition-all duration-500 flex flex-col justify-between gap-5`}
           className={`fixed inset-y-0 ${
             showNav ? "right-0" : "-right-full"
-          } w-[280px] max-w-[80vw] bg-[#216DFF] text-white p-5 transition-all duration-300 flex flex-col justify-between z-50`}
+          } w-70 max-w-[80vw] bg-[#216DFF] text-white p-5 transition-all duration-300 flex flex-col justify-between z-50`}
         >
           {/* top cross start */}
           <div className="flex justify-end">
