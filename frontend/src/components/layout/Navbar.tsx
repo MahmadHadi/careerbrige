@@ -70,7 +70,7 @@ const Navbar = () => {
           // className={`${showNav ? "right-0" : "-right-full"} bg-[#216DFF] text-white w-70 max-w-[80vw] h-screen fixed top-0 p-5 transition-all duration-500 flex flex-col justify-between gap-5`}
           className={`fixed inset-y-0 ${
             showNav ? "right-0" : "-right-full"
-          } w-[280px] max-w-[80vw] bg-[#216DFF] text-white p-5 transition-all duration-300 flex flex-col justify-between z-50`}
+          } w-70 max-w-[80vw] bg-[#216DFF] text-white p-5 transition-all duration-300 flex flex-col justify-between z-50`}
         >
           {/* top cross start */}
           <div className="flex justify-end">
